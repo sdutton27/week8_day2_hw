@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
-import Navbar from './Navbar'
-import Home from './Home'
-import Signup from './Signup'
-import Login from './Login'
+import Navbar from './components/Navbar'
+import Home from './views/Home'
+import Signup from './views/Signup'
+import Login from './views/Login'
+import Todo from './views/Todo'
+
+import { Routes, Route } from 'react-router-dom';
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
         user:{
-            username: "sho"
+            username: ""
         }
     }
 }
@@ -26,9 +29,12 @@ export default class App extends Component {
     return (
       <div>
         <Navbar user={this.state.user} switchUser={this.switchUser}/>
-        <Home/>
-        <Signup/>
-        <Login/>
+        <Routes>
+            <Route path="/signup" element={<Signup/>}/>
+            <Route path="/" element={<Home/>}/>
+            <Route path='/login' element={<Login/>}/>
+            <Route path='/to-do' element={<Todo/>}/>
+        </Routes>
       </div>
     )
   }

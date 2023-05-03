@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Pokemon from './Pokemon'
+import Pokemon from '../components/Pokemon'
 
 export default class Home extends Component {
   constructor(){

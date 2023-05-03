@@ -8,9 +8,11 @@ import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 
-import css from './index.css'
+import css from '../index.css'
 import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
+
+import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 
 
 export default class Navbar extends Component {
@@ -25,18 +27,19 @@ export default class Navbar extends Component {
                 <Menu {...bindMenu(popupState)}>
                   {this.props.user.username?
                     <div>
-                    <MenuItem onClick={popupState.close}>Home</MenuItem>
-                    <MenuItem onClick={popupState.close}>Some Page</MenuItem>
+                    <MenuItem onClick={popupState.close} component={RouterLink} to="/">Home</MenuItem>
+                    <MenuItem onClick={popupState.close} component={RouterLink} to="/to-do">To Do List</MenuItem>
                     <MenuItem onClick={popupState.close}>Another Page</MenuItem>
                     </div>:
                     <div>
-                    <MenuItem onClick={popupState.close}>Home</MenuItem>
-                    <MenuItem onClick={popupState.close}>Sign Up</MenuItem>
-                    <MenuItem onClick={popupState.close}>Login</MenuItem>
+                    <MenuItem onClick={popupState.close} component={RouterLink} to="/">Home</MenuItem>
+                    <MenuItem onClick={popupState.close} component={RouterLink} to="/signup">Sign Up</MenuItem>
+                    <MenuItem onClick={popupState.close} component={RouterLink} to="/login">Login</MenuItem>
+                    <MenuItem onClick={popupState.close} component={RouterLink} to="/to-do">To Do List</MenuItem>
                     </div>
                   }
                 </Menu>
-                {this.props.user.username === 'sho'? 
+                {this.props.user.username? 
                   <PopupState variant="popover" popupId="demo-popup-menu">
                   {(popupState) => (
                     <React.Fragment>
